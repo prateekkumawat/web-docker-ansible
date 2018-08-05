@@ -1,6 +1,6 @@
 FROM centos:latest
 
-MAINTAINER NewstarCorporation
+MAINTAINER PrateekKumawat
 
 RUN yum -y install httpd php php-mysql 
 #RUN sed -i -e 's~^DirectoryIndex \(.*\)$~DirectoryIndex \1 index.php~g' /etc/httpd/conf/httpd.conf
