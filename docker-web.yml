@@ -15,7 +15,14 @@
         name: docker 
         state: started
         enabled: true  
- 
+    
+    - name: allow port 3306 
+      firewalld:
+        service: mysql
+        immediate: true
+        permanent: true 
+        state: enabled
+      
     - name: Deployment of Dockerfile 
       command: docker build -t web-by-docker /var/lib/jenkins/workspace/dep-ans-docker/web-tier/.
 
@@ -31,5 +38,5 @@
 
     - name: testing the web
       uri: 
-       url: http://node4:80
+       url: http://node2:80
        status_code: 200
