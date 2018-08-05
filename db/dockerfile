@@ -1,12 +1,12 @@
  # Database container with simple data for a Web application
-# Using RHEL 7 base image and MariahDB database
+# Using centos 7 base image and MariahDB database
 # Version 1
 
 # Pull the rhel image from the local repository
 FROM centos:latest
 USER root
 
-MAINTAINER Maintainer_Name 
+MAINTAINER PrteekKumawat
 
 # Add Mariahdb software
 RUN yum -y install net-tools mariadb-server
