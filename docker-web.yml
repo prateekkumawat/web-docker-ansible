@@ -1,7 +1,6 @@
 ---
 - name: Deployment of web server on Docker using Dockerfile 
   hosts: webserver 
-  become: true 
   tasks: 
  
     - name: Install required packages
