@@ -1,0 +1,36 @@
+---
+- name: Deployment of web server on Docker using Dockerfile 
+  hosts: webserver 
+  become: true 
+  tasks: 
+ 
+    - name: Install required packages
+      yum: 
+        name: 
+          - docker
+          - mariadb
+        state: latest 
+
+    - name: start Docker service
+      service: 
+        name: docker 
+        state: started
+        enabled: true  
+ 
+    - name: Deployment of Dockerfile 
+      command: docker build -t web-by-docker web-tier/.
+
+    - name: application container
+      command: docker run -d -p 80:80 --name=webserver web-by-docker
+  
+
+    - name: Deployment of mysql container
+      command: docker build -t db-by-docker db/.
+
+    - name: mysql container 
+      command: docker run -d -p 3306:3306 --name=php db-by-docker
+
+    - name: testing the web
+      uri: 
+       url: http://node4:80
+       status_code: 200
